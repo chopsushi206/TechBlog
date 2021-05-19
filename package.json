@@ -1,0 +1,33 @@
+{
+  "name": "techblog",
+  "version": "1.0.0",
+  "description": "blog",
+  "main": "server.js",
+  "scripts": {
+    "test": "none",
+    "start": "node server.js",
+    "seed": "node seeds/seeds.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chopsushi206/TechBlog.git"
+  },
+  "keywords": [
+    "blog"
+  ],
+  "author": "Lihua Anderson",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/chopsushi206/TechBlog/issues"
+  },
+  "homepage": "https://github.com/chopsushi206/TechBlog#readme",
+  "dependencies": {
+    "connect-session-sequelize": "^7.1.1",
+    "dotenv": "^9.0.0",
+    "express": "^4.17.1",
+    "express-handlebars": "^5.3.2",
+    "express-session": "^1.17.1",
+    "mysql2": "^2.2.5",
+    "sequelize": "^6.6.2"
+  }
+}
