@@ -1,22 +1,18 @@
 [
-    {
-        "username": "lihua",
-        "email": "lihua@anderson.com",
-        "password": "levi"
-    },
-    {
-        "username": "christine",
-        "email": "christine@christine.com",
-        "password": "snowbella1234"
-    },
-    {
-        "username": "daniel",
-        "email": "sassy@girl.com",
-        "password": "SASSY"
-    },
-    {
-        "username": "jouan",
-        "email": "jouan@jouan.com",
-        "password": "password"
-    }
+  {
+    "username": "lihua",
+    "password": "levi"
+  },
+  {
+    "username": "christine",
+    "password": "snowbella1234"
+  },
+  {
+    "username": "daniel",
+    "password": "SASSY"
+  },
+  {
+    "username": "jouan",
+    "password": "password"
+  }
 ]

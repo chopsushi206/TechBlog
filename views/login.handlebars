@@ -1,1 +1,30 @@
-Login Here
+<div class="contentContainer">
+  <div class="formContainer">
+    <div class="postHeader"><span class="postTitle">Login</span></div>
+    <div class="formBody">
+      <form id="login-form">
+        <p><input
+            type="text"
+            name="username"
+            placeholder="username"
+            class="input-field"
+          /></p>
+        <p><input
+            type="text"
+            name="password"
+            placeholder="password"
+            class="input-field"
+          /></p>
+        <br /><br />
+        <button
+          class="button"
+          type="button"
+          id="login-form-submit"
+        >Login</button>
+      </form>
+      <div class="hidden">Incorrect login. Please try again.</div>
+    </div>
+  </div>
+</div>
+
+<script src="/js/login.js"></script>

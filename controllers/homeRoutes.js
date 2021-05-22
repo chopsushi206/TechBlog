@@ -12,14 +12,12 @@ router.get("/", async (req, res) => {
         },
       ],
     });
-    console.log(postData);
     const posts = postData.map((post) => post.get({ plain: true }));
 
     res.render("homepage", {
       posts,
     });
   } catch (err) {
-    console.log(err);
     res.status(400).json(err);
   }
 });
