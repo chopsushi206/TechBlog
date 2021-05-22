@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const withAuth = require("../utils/auth");
-const { User, Post, Comment } = require("../models/user");
+const { User, Post, Comment } = require("../models");
 
 router.get("/", async (req, res) => {
   try {
@@ -19,6 +19,7 @@ router.get("/", async (req, res) => {
       posts,
     });
   } catch (err) {
+    console.log(err);
     res.status(400).json(err);
   }
 });
