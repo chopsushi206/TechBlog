@@ -6,12 +6,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const loginFormHandler = async (event) => {
     event.preventDefault();
 
-    const name = loginForm.username.value.trim();
+    const username = loginForm.username.value.trim();
     const password = loginForm.password.value.trim();
-    console.log(name);
-    console.log(password);
 
-    if (name && password) {
+    if (username && password) {
       const response = await fetch("/api/users/login", {
         method: "POST",
         body: JSON.stringify({ username, password }),
