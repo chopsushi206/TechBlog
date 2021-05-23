@@ -2,22 +2,17 @@
   <div class="formContainer">
     <div class="postHeader"><span class="postTitle">Update Post</span></div>
     <div class="formBody">
-      <form id="newPost">
-        <p><input
-            type="text"
-            name="title"
-            placeholder="{{post.id}}"
-            class="blogTitle"
-          /></p>
+      <form id="update">
         <p><textarea
-            name="blog"
-            placeholder="{{post.id}}"
-            class="blogBody"
-          ></textarea></p>
+            name="title"
+            class="blogTitle"
+          >{{post.title}}</textarea></p>
+        <p><textarea name="blog" class="blogBody">{{post.blog}}</textarea></p>
         <button class="button" type="button" id="updatePost">Update</button>
+        <button class="button" type="button" id="deletePost">Delete</button>
       </form>
     </div>
   </div>
 </div>
 
-<script src="/js/post.js"></script>
+<script src="/js/update.js"></script>

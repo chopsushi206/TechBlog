@@ -68,16 +68,16 @@ router.get("/post", withAuth, async (req, res) => {
   }
 });
 
-router.get("/update", withAuth, async (req, res) => {
+router.get("/update/:id", withAuth, async (req, res) => {
   try {
     const postData = await Post.findOne({
       where: {
         id: req.params.id,
       },
     });
-    const posts = postData.map((post) => post.get({ plain: true }));
+    let post = postData.dataValues;
     res.render("update", {
-      posts,
+      post,
       loggedIn: req.session.loggedIn,
     });
   } catch (err) {

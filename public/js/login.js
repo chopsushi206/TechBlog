@@ -3,6 +3,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const loginButton = document.getElementById("login-form-submit");
   const loginErrorMsg = document.getElementById("login-error-msg");
 
+  //login form
+
   const loginFormHandler = async (event) => {
     event.preventDefault();
 
