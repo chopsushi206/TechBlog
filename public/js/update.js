@@ -1,15 +1,18 @@
 document.addEventListener("DOMContentLoaded", () => {
   const postForm = document.getElementById("update");
   const submitUpdate = document.getElementById("updatePost");
+  const submitDelete = document.getElementById("deletePost");
 
-  const postFormHandler = async (event) => {
+  const updatePost = async (event) => {
     event.preventDefault();
+    const id = postForm.getAttribute("data-id");
 
     const title = postForm.title.value.trim();
     const blog = postForm.blog.value.trim();
-
+    console.log(title, blog);
+    console.log(id);
     if (title && blog) {
-      const response = await fetch("/api/posts/update/${id}", {
+      const response = await fetch(`/api/posts/update/${id}`, {
         method: "PUT",
         body: JSON.stringify({ title, blog }),
         headers: { "Content-Type": "application/json" },
@@ -25,17 +28,23 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   };
 
-  // When the login button is clicked, the following code is executed
+  const deletePost = async (event) => {
+    event.preventDefault();
+    const id = postForm.getAttribute("data-id");
+    console.log(id);
+    const response = await fetch(`/api/posts/${id}`, {
+      method: "DELETE",
+    });
 
-  submitUpdate.addEventListener("click", (e) => {
-    e.preventDefault();
-    const title = postForm.title.value;
-    const blog = postForm.blog.value;
-
-    if (title && blog) {
-      postFormHandler(e);
+    if (response.ok) {
+      document.location.replace("/dashboard");
+      alert("You have successfully deleted your post.");
     } else {
-      alert("Error. Failed to update. Please try again.");
+      alert("Failed to delete. Please try again.");
     }
-  });
+  };
+  // When the button is clicked, the following code is executed
+
+  submitDelete.addEventListener("click", deletePost);
+  submitUpdate.addEventListener("click", updatePost);
 });
