@@ -2,6 +2,7 @@ const router = require("express").Router();
 const { Post } = require("../../models");
 const withAuth = require("../../utils/auth");
 
+//create a post
 router.post("/", withAuth, async (req, res) => {
   try {
     const newPost = await Post.create({
@@ -15,6 +16,7 @@ router.post("/", withAuth, async (req, res) => {
   }
 });
 
+//get all posts by all users
 router.get("/", async (req, res) => {
   try {
     const postData = await Post.findAll();
@@ -24,22 +26,29 @@ router.get("/", async (req, res) => {
   }
 });
 
-router.get("/:id", async (req, res) => {
+//get a # post
+router.get("/:id", withAuth, async (req, res) => {
   try {
-    const postData = await Post.findByPk(req.params.id);
-
-    if (!postData) {
-      req
-        .status(400)
-        .json({ message: "No posts found associated with this id" });
-      return;
-    }
-    res.status(200).json(postData);
+    const post = await Post.findOne({
+      where: {
+        id: req.params.id,
+      },
+    });
+    console.log(post);
+    const commentData = await Comment.findAll({
+      where: {
+        post_id: req.params.id,
+      },
+      include: [User],
+    });
+    console.log(commentData);
+    res.status(200).json(post, commentData);
   } catch (err) {
-    res.status(500).json(err);
+    res.status(400).json(err);
   }
 });
 
+//updates existing post
 router.put("/update/:id", withAuth, async (req, res) => {
   try {
     const updatedPost = await Post.update(req.body, {
@@ -53,6 +62,7 @@ router.put("/update/:id", withAuth, async (req, res) => {
   }
 });
 
+//deletes post
 router.delete("/:id", withAuth, async (req, res) => {
   try {
     const postData = await Post.destroy({
@@ -62,7 +72,7 @@ router.delete("/:id", withAuth, async (req, res) => {
       },
     });
 
-    if (!projectData) {
+    if (!postData) {
       res.status(400).json({ message: "No posts match with this id" });
       return;
     }
