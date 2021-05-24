@@ -2,6 +2,7 @@ const router = require("express").Router();
 const withAuth = require("../utils/auth");
 const { User, Post, Comment } = require("../models");
 
+//renders homepage
 router.get("/", async (req, res) => {
   try {
     const postData = await Post.findAll({
@@ -22,6 +23,7 @@ router.get("/", async (req, res) => {
   }
 });
 
+//renders login page
 router.get("/login", async (req, res) => {
   try {
     if (req.session.loggedIn) {
@@ -34,6 +36,7 @@ router.get("/login", async (req, res) => {
   }
 });
 
+//renders signup page
 router.get("/register", async (req, res) => {
   try {
     res.status(200).render("register");
@@ -42,6 +45,7 @@ router.get("/register", async (req, res) => {
   }
 });
 
+//renders dashboard
 router.get("/dashboard", withAuth, async (req, res) => {
   try {
     const postData = await Post.findAll({
@@ -60,6 +64,7 @@ router.get("/dashboard", withAuth, async (req, res) => {
   }
 });
 
+//renders post form
 router.get("/post", withAuth, async (req, res) => {
   try {
     res.status(200).render("post");
@@ -68,6 +73,36 @@ router.get("/post", withAuth, async (req, res) => {
   }
 });
 
+router.get("/comments/:id", async (req, res) => {
+  try {
+    const postData = await Post.findOne({
+      where: {
+        id: req.params.id,
+      },
+      include: [
+        {
+          model: User,
+          attributes: ["username"],
+          model: Comment,
+          attributes: ["comment"],
+        },
+      ],
+    });
+    const post = postData.dataValues;
+    const commentData = commentData.map((post) => post.get({ plain: true }));
+    console.log(post);
+    console.log(commentData);
+
+    res.render("comments", {
+      post,
+      comments,
+    });
+  } catch (err) {
+    res.status(400).json(err);
+  }
+});
+
+//renders update post form
 router.get("/update/:id", withAuth, async (req, res) => {
   try {
     const postData = await Post.findOne({

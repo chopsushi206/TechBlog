@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { Post } = require("../../models");
+const { User, Post, Comment } = require("../../models");
 const withAuth = require("../../utils/auth");
 
 //create a post
@@ -27,7 +27,7 @@ router.get("/", async (req, res) => {
 });
 
 //get a # post
-router.get("/:id", withAuth, async (req, res) => {
+router.get("/:id", async (req, res) => {
   try {
     const post = await Post.findOne({
       where: {
@@ -42,9 +42,10 @@ router.get("/:id", withAuth, async (req, res) => {
       include: [User],
     });
     console.log(commentData);
-    res.status(200).json(post, commentData);
+    res.status(200).json({ post, commentData });
   } catch (err) {
     res.status(400).json(err);
+    console.log(err);
   }
 });
 

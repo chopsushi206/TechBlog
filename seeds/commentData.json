@@ -1,14 +1,16 @@
 [
-    {
-        "comment": "Your mom was here",
-        "user_id": "1"
-    },
-    {
-        "comment": "So was Sassy Girl",
-        "user_id": "3"
-    },
-    {
-        "comment": "SNOWWWW meow",
-        "user_id": "1"
-    }
+  {
+    "comment": "Your mom was here",
+    "post_id": "2",
+    "user_id": "1"
+  },
+  {
+    "comment": "So was Sassy Girl",
+    "post_id": "2",
+    "user_id": "3"
+  },
+  {
+    "comment": "SNOWWWW meow",
+    "user_id": "1"
+  }
 ]
