@@ -89,16 +89,17 @@ router.get("/comments/:id", async (req, res) => {
       ],
     });
     const post = postData.dataValues;
-    const commentData = commentData.map((post) => post.get({ plain: true }));
+    // const commentData = commentData.map((post) => post.get({ plain: true }));
     console.log(post);
-    console.log(commentData);
+    //console.log(commentData);
 
     res.render("comments", {
       post,
-      comments,
+      // comments,
     });
   } catch (err) {
     res.status(400).json(err);
+    console.log(err);
   }
 });
 
