@@ -83,19 +83,32 @@ router.get("/comments/:id", async (req, res) => {
         {
           model: User,
           attributes: ["username"],
+        },
+        {
           model: Comment,
           attributes: ["comment"],
         },
       ],
     });
+    const commentData = await Comment.findAll({
+      where: {
+        id: req.params._post_id,
+      },
+      include: [
+        {
+          model: User,
+          attributes: ["username"],
+        },
+      ],
+    });
     const post = postData.dataValues;
-    // const commentData = commentData.map((post) => post.get({ plain: true }));
+    const comments = commentData.map((post) => post.get({ plain: true }));
     console.log(post);
-    //console.log(commentData);
+    console.log(commentData);
 
     res.render("comments", {
       post,
-      // comments,
+      comments,
     });
   } catch (err) {
     res.status(400).json(err);

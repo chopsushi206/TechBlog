@@ -3,7 +3,7 @@
     <div class="postHeader">
       <span class="postTitle">{{post.title}}</span>
       <span class="postInfo">Posted by
-        {{post.user.username}}
+        {{post.user.dataValues.username}}
         on 12/12/12.</span>
     </div>
     <div class="postBody">
@@ -12,9 +12,10 @@
   </div>
 </div>
 <div class="comments">
-  {{#each comments as |comment|}}
-    <div class="comment">{{post.comment.comment}}</div>
-    <div class="commentUser">posted by: {{post.comment.user.username}}</div>
+  {{#each Comments as |comment|}}
+    <div class="comment">{{Comments.comment.dataValues.comment}}</div>
+    <div class="commentUser">posted by:
+      {{Comments.comment.dataValues.user.username}}</div>
   {{/each}}
 </div>
 
@@ -27,12 +28,10 @@
             type="text"
             name="comment"
             placeholder="Add Your Comment"
-            class="blogTitle"
+            class="commentInput"
           /></p>
         <button class="button" type="button" id="submitComment">Post</button>
       </form>
     </div>
   </div>
 </div>
-
-<script src="/js/comment.js"></script>

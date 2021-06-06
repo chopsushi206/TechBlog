@@ -42,7 +42,7 @@ router.get("/:id", async (req, res) => {
       include: [User],
     });
     console.log(commentData);
-    res.status(200).json({ post, commentData });
+    res.status(200).json({ post });
   } catch (err) {
     res.status(400).json(err);
     console.log(err);
