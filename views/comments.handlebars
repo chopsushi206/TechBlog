@@ -11,11 +11,12 @@
     </div>
   </div>
 </div>
-<div class="comments">
-  {{#each Comments as |comment|}}
-    <div class="comment">{{Comments.comment.dataValues.comment}}</div>
-    <div class="commentUser">posted by:
-      {{Comments.comment.dataValues.user.username}}</div>
+<div class="commentContainer">
+  <div class="postHeader"><span class="postTitle">Comments</span></div>
+  {{#each comments as |comment|}}
+    <div class="comment">{{comment.comment}}</div>
+    <div class="commentUser">--posted by
+      {{comment.user.username}}</div>
   {{/each}}
 </div>
 
@@ -35,3 +36,5 @@
     </div>
   </div>
 </div>
+
+<script src="/js/comment.js"></script>

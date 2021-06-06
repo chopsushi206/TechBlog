@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;600;700&display=swap');
-
 * {
     margin: 0;
     padding: 0;
@@ -16,7 +15,7 @@ nav {
     color: #fff;
 }
 
-a{
+a {
     color: rgb(207, 207, 207);
 }
 
@@ -48,7 +47,6 @@ a{
 .post {
     margin: 10px;
     border: 2px solid #425548;
-
 }
 
 .postHeader {
@@ -61,7 +59,7 @@ a{
 }
 
 .postBody {
-padding: 5px;
+    padding: 5px;
 }
 
 .postTitle {
@@ -84,7 +82,7 @@ padding: 5px;
     border: 2px solid #425548;
 }
 
-.formBody{
+.formBody {
     padding: 5px;
     display: flex;
     flex-direction: column;
@@ -106,7 +104,7 @@ padding: 5px;
 
 .blogBody {
     margin-bottom: 10px;
-    width:100%;
+    width: 100%;
     height: 400px;
 }
 
@@ -134,4 +132,23 @@ padding: 5px;
 
 .commentInput {
     width: 80%;
+}
+
+.commentContainer {
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border: 2px solid #425548;
+}
+
+.comment {
+    width: 100%;
+    margin: 0px 10px 0px 10px;
+}
+
+.commentUser {
+    margin: 0px 10px 15px 10px;
+    font-size: 10px;
+    font-weight: bold;
 }

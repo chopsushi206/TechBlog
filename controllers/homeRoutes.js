@@ -73,7 +73,8 @@ router.get("/post", withAuth, async (req, res) => {
   }
 });
 
-router.get("/comments/:id", async (req, res) => {
+//renders single post with corresponding comments
+router.get("/post/:id", withAuth, async (req, res) => {
   try {
     const postData = await Post.findOne({
       where: {
@@ -84,15 +85,11 @@ router.get("/comments/:id", async (req, res) => {
           model: User,
           attributes: ["username"],
         },
-        {
-          model: Comment,
-          attributes: ["comment"],
-        },
       ],
     });
     const commentData = await Comment.findAll({
       where: {
-        id: req.params._post_id,
+        post_id: req.params.id,
       },
       include: [
         {
@@ -101,20 +98,18 @@ router.get("/comments/:id", async (req, res) => {
         },
       ],
     });
-    const post = postData.dataValues;
-    const comments = commentData.map((post) => post.get({ plain: true }));
-    console.log(post);
-    console.log(commentData);
-
+    let post = postData.dataValues;
+    let comments = commentData.map((comment) => comment.get({ plain: true }));
     res.render("comments", {
       post,
-      comments,
+      comments
     });
   } catch (err) {
-    res.status(400).json(err);
     console.log(err);
+    res.status(500).json(err);
   }
 });
+
 
 //renders update post form
 router.get("/update/:id", withAuth, async (req, res) => {
