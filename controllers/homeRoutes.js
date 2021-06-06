@@ -104,6 +104,7 @@ router.get("/post/:id", withAuth, async (req, res) => {
       post,
       comments
     });
+    console.log(post);
   } catch (err) {
     console.log(err);
     res.status(500).json(err);

@@ -1,17 +1,17 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const commentForm = document.getElementById("newComment");
+    const commentForm = document.querySelector("#newComment");
     const newComment = document.getElementById("submitComment");
   
     const commentFormHandler = async (event) => {
       event.preventDefault();
   
       const content = commentForm.comment.value.trim();
-  
-      if (content) {
-          console.log(content);
+      const postId = commentForm.dataset.id;
+      if (content && postId) {
+          
         const response = await fetch("/api/comments/", {
           method: "POST",
-          body: JSON.stringify({ content }),
+          body: JSON.stringify({ comment: content, post_id: postId }),
           headers: { "Content-Type": "application/json" },
         });
   
@@ -29,9 +29,10 @@ document.addEventListener("DOMContentLoaded", () => {
   
     newComment.addEventListener("click", (e) => {
       e.preventDefault();
-      const content = commentForm.comment.value;
-  
-      if (content) {
+      const content = commentForm.comment.value; 
+      const postId = commentForm.dataset.id;
+      console.log(postId);
+      if (content && postId) {
         commentFormHandler(e);
       } else {
         alert("Error. Failed to post comment. Please try again.");
