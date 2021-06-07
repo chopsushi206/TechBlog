@@ -58,9 +58,6 @@
 ![TechBlogPreview](/public/img/tech.jpg)
   Application to Save a list of notes, such as a to-do list, appointments or other things the user wants to remember.
 
-  ## Installation Instructions
-
-  Runs through server.js
   
   ## Usage
 
