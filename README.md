@@ -15,6 +15,9 @@
 
 ![TechBlogPreview](/public/img/tech.jpg)
 
+[Live Deployment](
+https://calm-hamlet-00362.herokuapp.com/)
+
   Application to Render a Blog allowing users to Register, LogIn, View/Create/Edit/Delete Posts. Also allows user to comment on posts as well.
 
   
